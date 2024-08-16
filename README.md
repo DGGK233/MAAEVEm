@@ -1,3 +1,79 @@
+# MAAEVEm
+EVE手游的小助手
+
+## 功能
+- 支持多账号自动种菜和收菜
+
+## 下载
+下载地址：[MAAEVEm Releases](https://github.com/DGGK233/MAAEVEm/releases)
+
+## 使用前配置
+
+使用本工具前，需要对以下文件进行配置：`resource/base/pipeline/my_task.json`
+
+### 配置步骤
+
+1. **修改点击行星采集任务**
+   ```json
+   "点击行星采集": {
+     "recognition": "TemplateMatch",
+     "template": "行星采集图标.png",
+     "action": "Click",
+     "times_limit": 7,
+     "is_sub": true,
+     "post_delay": 5000,
+     "runout_next": [ "进入仓库" ],
+     "next": [ "点击行星" ]
+   }
+   ```
+   将 `times_limit` 的值修改为账号的总数（例如，如果有7个账号，则设置为 `7`）。
+
+2. **配置选择角色任务**
+   ```json
+   "选择角色": {
+     "recognition": "OCR",
+     "expected": [],
+     "action": "Click",
+     "target_offset": [ 0, 100, 0, 0 ],
+     "timeout": 3000,
+     "post_delay": 13000,
+     "timeout_next": [ "进入游戏" ],
+     "next": [ "点击行星采集" ]
+   },
+   "选择角色1": {
+     "recognition": "OCR",
+     "expected": [],
+     "action": "Click",
+     "target_offset": [ 0, 100, 0, 0 ],
+     "timeout": 3000,
+     "post_delay": 12000,
+     "timeout_next": [ "进入游戏1" ],
+     "next": []
+   }
+   ```
+   在 `expected` 项中填入角色的名字或军团的名字，例如：
+   ```json
+   "expected": [ "EF0", "OW", "张三", "蓝色太平洋大鸟" ]
+   ```
+
+3. **配置收菜船只**
+   ```json
+   "点击货船": {
+     "recognition": "OCR",
+     "expected": "伊米卡斯",
+     "action": "Click",
+     "post_delay": 1000,
+     "next": [ "点击激活" ]
+   }
+   ```
+   将 `expected` 的值改为你用于收菜的船只名称。
+
+## 说明
+- 每个账号仅操作一个角色。
+- 收菜的账号为最先登录的账号，收菜舰船应放置在该账号的仓库内。
+
+---
+
 <!-- markdownlint-disable MD033 MD041 -->
 <p align="center">
   <img alt="LOGO" src="https://cdn.jsdelivr.net/gh/MaaAssistantArknights/design@main/logo/maa-logo_512x512.png" width="256" height="256" />
