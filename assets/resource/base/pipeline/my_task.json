@@ -1,5 +1,942 @@
 {
-    "MyTask1": {},
-    "MyTask2": {},
-    "MyTask3": {}
+  "点击游戏名字": {
+    "recognition": "OCR",
+    "expected": "星战前夜",
+    "action": "Click",
+    "post_delay": 10000,
+    "next": [ "进入游戏" ]
+  },
+  "选择账号": {
+    "recognition": "TemplateMatch",
+    "template": "账号图标.png",
+    "action": "Click",
+    "next": []
+  },
+  "进入游戏": {
+    "recognition": "OCR",
+    "expected": "开始游戏",
+    "action": "Click",
+    "post_delay": 6000,
+    "next": [ "选择角色" ]
+  },
+  "选择角色": {
+    "recognition": "OCR",
+    "expected": [],
+    "action": "Click",
+    "target_offset": [ 0, 100, 0, 0 ],
+    "timeout": 3000,
+    "post_delay": 13000,
+    "timeout_next": [ "进入游戏" ],
+    "next": [ "点击行星采集" ]
+  },
+  "点击行星采集": {
+    "recognition": "TemplateMatch",
+    "template": "行星采集图标.png",
+    "action": "Click",
+    "times_limit": 7,
+    "is_sub": true,
+    "post_delay": 5000,
+    "runout_next": [ "进入仓库" ],
+    "next": [ "点击行星" ]
+  },
+  "点击行星": {
+    "action": "Click",
+    "target": [ 21, 128, 143, 18 ],
+    "post_delay": 2000,
+    "next": [ "增加时间" ]
+  },
+  "增加时间": {
+    "recognition": "TemplateMatch",
+    "template": "添加时间图标.png",
+    "action": "Click",
+    "post_delay": 500,
+    "next": [ "确认增加时间" ]
+  },
+  "确认增加时间": {
+    "recognition": "TemplateMatch",
+    "template": "确认图标.png",
+    "action": "Click",
+    "post_delay": 500,
+    "next": [ "发射" ]
+  },
+  "发射": {
+    "recognition": "OCR",
+    "expected": "发射",
+    "action": "Click",
+    "post_delay": 500,
+    "next": [ "确认发射" ]
+  },
+  "确认发射": {
+    "recognition": "TemplateMatch",
+    "template": "确认图标.png",
+    "action": "Click",
+    "post_delay": 500,
+    "next": [ "退出种菜界面" ]
+  },
+  "退出种菜界面": {
+    "recognition": "TemplateMatch",
+    "template": "退出图标.png",
+    "action": "Click",
+    "post_delay": 3500,
+    "next": [ "点开设置" ]
+  },
+  "点开大界面": {
+    "recognition": "TemplateMatch",
+    "template": "wifi图标.png",
+    "action": "Click",
+    "next": []
+  },
+  "点开设置": {
+    "recognition": "TemplateMatch",
+    "template": "设置图标.png",
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [ "点击个人中心" ]
+  },
+  "点击个人中心": {
+    "recognition": "OCR",
+    "expected": "个人中心",
+    "action": "Click",
+    "next": [ "点击切换账号" ]
+  },
+  "点击切换账号": {
+    "recognition": "OCR",
+    "expected": "切换帐号",
+    "action": "Click",
+    "post_delay": 2000,
+    "next": [ "展开账号" ]
+  },
+  "展开账号": {
+    "recognition": "TemplateMatch",
+    "template": "展开账号图标.png",
+    "action": "Click",
+    "next": [ "向下滑动" ]
+  },
+  "向下滑动": {
+    "action": "Swipe",
+    "begin": [ 468, 562, 192, 23 ],
+    "end": [ 468, 0, 192, 23 ],
+    "next": [ "点击最后一个账号" ]
+  },
+  "点击最后一个账号": {
+    "recognition": "OCR",
+    "expected": "添加新帐号",
+    "action": "Click",
+    "target_offset": [ 0, -100, 0, 0 ],
+    "next": [ "登录账号" ]
+  },
+  "登录账号": {
+    "recognition": "TemplateMatch",
+    "template": "登录按钮图标.png",
+    "action": "Click",
+    "next": [ "进入游戏1" ]
+  },
+  "进入游戏1": {
+    "recognition": "OCR",
+    "expected": "开始游戏",
+    "action": "Click",
+    "post_delay": 5000,
+    "next": [ "选择角色1" ]
+  },
+  "选择角色1": {
+    "recognition": "OCR",
+    "expected": [],
+    "action": "Click",
+    "target_offset": [ 0, 100, 0, 0 ],
+    "timeout": 3000,
+    "post_delay": 12000,
+    "timeout_next": [ "进入游戏1" ],
+    "next": []
+  },
+
+  "进入仓库": {
+    "recognition": "TemplateMatch",
+    "template": "仓库图标.png",
+    "action": "Click",
+    "post_delay": 2000,
+    "next": [ "点击舰船机库" ]
+  },
+  "点击舰船机库": {
+    "recognition": "OCR",
+    "expected": "舰船机库",
+    "action": "Click",
+    "next": [ "点击驾驶船只" ]
+  },
+  "点击驾驶船只": {
+    "recognition": "TemplateMatch",
+    "roi": [ 250, 0, 1280, 720 ],
+    "template": "驾驶船只图标.png",
+    "action": "Click",
+    "next": [ "点击离舰" ]
+  },
+  "点击离舰": {
+    "recognition": "OCR",
+    "expected": "离舰",
+    "action": "Click",
+    "post_delay": 8000,
+    "next": [ "点击货船" ]
+  },
+  "点击货船": {
+    "recognition": "OCR",
+    "expected": "伊米卡斯",
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [ "点击激活" ]
+  },
+  "点击激活": {
+    "recognition": "OCR",
+    "expected": "激活",
+    "action": "Click",
+    "post_delay": 6000,
+    "next": [ "退出仓库" ]
+  },
+  "退出仓库": {
+    "recognition": "TemplateMatch",
+    "template": "退出图标.png",
+    "action": "Click",
+    "next": [ "点击离站" ]
+  },
+
+  "点击离站": {
+    "recognition": "OCR",
+    "expected": "离站",
+    "action": "Click",
+    "post_delay": 10000,
+    "next": [ "点击行星采集1" ]
+  },
+
+
+
+  "点击行星采集1": {
+    "recognition": "TemplateMatch",
+    "template": "行星采集图标.png",
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [ "点击1" ]
+  },
+  "点击1": {
+    "action": "Click",
+    "target": [ 22, 706, 96, 13 ],
+    "post_delay": 2000,
+    "next": [ "点击设为终点1" ]
+  },
+  "点击设为终点1": {
+    "recognition": "OCR",
+    "expected": "设为终点",
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [ "退出种菜界面1" ]
+  },
+  "退出种菜界面1": {
+    "recognition": "TemplateMatch",
+    "template": "退出图标.png",
+    "action": "Click",
+    "post_delay": 5500,
+    "next": [ "开始导航1" ]
+  },
+  "开始导航1": {
+    "recognition": "TemplateMatch",
+    "template": "开始导航.png",
+    "action": "Click",
+    "timeout": 200000,
+    "post_delay": 2000,
+    "next": [ "点击一键拾取1" ]
+  },
+  "点击一键拾取1": {
+    "recognition": "OCR",
+    "expected": "键拾取",
+    "timeout": 200000,
+    "post_delay": 4000,
+    "action": "Click",
+    "timeout_next": [ "点击一键拾取1" ],
+    "next": [ "展开侧边栏1" ]
+  },
+  "展开侧边栏1": {
+    "recognition": "TemplateMatch",
+    "template": "侧边栏图标.png",
+    "action": "Click",
+    "post_delay": 3000,
+    "timeout": 8000,
+    "timeout_next": [ "循环1" ],
+    "roi": [ 1200, 370, 60, 60 ],
+    "next": [ "展开菜单1" ]
+  },
+  "展开菜单1": {
+    "recognition": "TemplateMatch",
+    "template": "展开菜单.png",
+    "roi": [ 800, 0, 480, 620 ],
+    "action": "Click",
+    "post_delay": 3000,
+    "next": [ "点击拾取1" ]
+  },
+  "点击拾取1": {
+    "recognition": "OCR",
+    "expected": "拾取",
+    "roi": [ 800, 100, 480, 620 ],
+    "action": "Click",
+    "post_delay": 2000,
+    "next": [ "循环1" ]
+  },
+  "循环1": {
+    "post_delay": 2000,
+    "timeout": 3000,
+    "next": [ "点击箱子图标1", "点击行星采集2" ]
+  },
+  "点击箱子图标1": {
+    "recognition": "TemplateMatch",
+    "template": "箱子图标.png",
+    "roi": [ 950, 0, 100, 720 ],
+    "post_delay": 2000,
+    "action": "Click",
+    "is_sub": true,
+    "timeout": 3000,
+    "next": [ "点击拾取箱子1" ]
+  },
+  "点击拾取箱子1": {
+    "recognition": "OCR",
+    "expected": "拾取",
+    "roi": [ 800, 0, 100, 720 ],
+    "action": "Click",
+    "timeout": 6000,
+    "post_delay": 12000,
+    "next": [ "点击一键拾取后1" ]
+  },
+  "点击一键拾取后1": {
+    "recognition": "OCR",
+    "expected": "键拾取",
+    "action": "Click",
+    "post_delay": 3400,
+    "timeout": 3000
+  },
+
+
+
+
+
+
+
+
+  "点击行星采集2": {
+    "recognition": "TemplateMatch",
+    "template": "行星采集图标.png",
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [ "点击2" ]
+  },
+  "点击2": {
+    "action": "Click",
+    "target": [ 21, 128, 143, 18 ],
+    "post_delay": 2000,
+    "next": [ "点击设为终点2" ]
+  },
+  "点击设为终点2": {
+    "recognition": "OCR",
+    "expected": "设为终点",
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [ "退出种菜界面2" ]
+  },
+  "退出种菜界面2": {
+    "recognition": "TemplateMatch",
+    "template": "退出图标.png",
+    "action": "Click",
+    "post_delay": 5500,
+    "next": [ "开始导航2" ]
+  },
+  "开始导航2": {
+    "recognition": "TemplateMatch",
+    "template": "开始导航.png",
+    "action": "Click",
+    "timeout": 200000,
+    "post_delay": 2000,
+    "next": [ "点击一键拾取2" ]
+  },
+  "点击一键拾取2": {
+    "recognition": "OCR",
+    "expected": "键拾取",
+    "timeout": 200000,
+    "post_delay": 4000,
+    "action": "Click",
+    "next": [ "展开侧边栏2" ]
+  },
+  "展开侧边栏2": {
+    "recognition": "TemplateMatch",
+    "template": "侧边栏图标.png",
+    "action": "Click",
+    "post_delay": 3000,
+    "timeout": 8000,
+    "timeout_next": [ "循环2" ],
+    "roi": [ 1200, 370, 60, 60 ],
+    "next": [ "展开菜单2" ]
+  },
+  "展开菜单2": {
+    "recognition": "TemplateMatch",
+    "template": "展开菜单.png",
+    "roi": [ 800, 0, 480, 620 ],
+    "action": "Click",
+    "post_delay": 3000,
+    "next": [ "点击拾取2" ]
+  },
+  "点击拾取2": {
+    "recognition": "OCR",
+    "expected": "拾取",
+    "roi": [ 800, 100, 480, 620 ],
+    "action": "Click",
+    "post_delay": 2000,
+    "next": [ "循环2" ]
+  },
+  "循环2": {
+    "post_delay": 2000,
+    "timeout": 3000,
+    "next": [ "点击箱子图标2", "点击行星采集3" ]
+  },
+  "点击箱子图标2": {
+    "recognition": "TemplateMatch",
+    "template": "箱子图标.png",
+    "roi": [ 950, 0, 100, 720 ],
+    "post_delay": 2000,
+    "action": "Click",
+    "is_sub": true,
+    "timeout": 3000,
+    "next": [ "点击拾取箱子2" ]
+  },
+  "点击拾取箱子2": {
+    "recognition": "OCR",
+    "expected": "拾取",
+    "roi": [ 800, 0, 100, 720 ],
+    "action": "Click",
+    "post_delay": 12000,
+    "timeout": 6000,
+    "next": [ "点击一键拾取后2" ]
+  },
+  "点击一键拾取后2": {
+    "recognition": "OCR",
+    "expected": "键拾取",
+    "action": "Click",
+    "post_delay": 3400,
+    "timeout": 3000
+  },
+
+
+  "点击行星采集3": {
+    "recognition": "TemplateMatch",
+    "template": "行星采集图标.png",
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [ "点击3" ]
+  },
+  "点击3": {
+    "action": "Click",
+    "target": [ 21, 244, 140, 18 ],
+    "post_delay": 2000,
+    "next": [ "点击设为终点3" ]
+  },
+  "点击设为终点3": {
+    "recognition": "OCR",
+    "expected": "设为终点",
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [ "退出种菜界面3" ]
+  },
+  "退出种菜界面3": {
+    "recognition": "TemplateMatch",
+    "template": "退出图标.png",
+    "action": "Click",
+    "post_delay": 5500,
+    "next": [ "开始导航3" ]
+  },
+  "开始导航3": {
+    "recognition": "TemplateMatch",
+    "template": "开始导航.png",
+    "action": "Click",
+    "timeout": 200000,
+    "post_delay": 2000,
+    "next": [ "点击一键拾取3" ]
+  },
+  "点击一键拾取3": {
+    "recognition": "OCR",
+    "expected": "键拾取",
+    "timeout": 200000,
+    "post_delay": 4000,
+    "action": "Click",
+    "next": [ "展开侧边栏3" ]
+  },
+  "展开侧边栏3": {
+    "recognition": "TemplateMatch",
+    "template": "侧边栏图标.png",
+    "action": "Click",
+    "post_delay": 3000,
+    "timeout": 8000,
+    "timeout_next": [ "循环3" ],
+    "roi": [ 1200, 370, 60, 60 ],
+    "next": [ "展开菜单3" ]
+  },
+  "展开菜单3": {
+    "recognition": "TemplateMatch",
+    "template": "展开菜单.png",
+    "roi": [ 800, 0, 480, 620 ],
+    "action": "Click",
+    "post_delay": 3000,
+    "next": [ "点击拾取3" ]
+  },
+  "点击拾取3": {
+    "recognition": "OCR",
+    "expected": "拾取",
+    "roi": [ 800, 100, 480, 620 ],
+    "action": "Click",
+    "post_delay": 2000,
+    "next": [ "循环3" ]
+  },
+  "循环3": {
+    "post_delay": 2000,
+    "timeout": 3000,
+    "next": [ "点击箱子图标3", "点击行星采集4" ]
+  },
+  "点击箱子图标3": {
+    "recognition": "TemplateMatch",
+    "template": "箱子图标.png",
+    "roi": [ 950, 0, 100, 720 ],
+    "post_delay": 2000,
+    "action": "Click",
+    "is_sub": true,
+    "timeout": 3000,
+    "next": [ "点击拾取箱子3" ]
+  },
+  "点击拾取箱子3": {
+    "recognition": "OCR",
+    "expected": "拾取",
+    "roi": [ 800, 0, 100, 720 ],
+    "action": "Click",
+    "post_delay": 12000,
+    "timeout": 6000,
+    "next": [ "点击一键拾取后3" ]
+  },
+  "点击一键拾取后3": {
+    "recognition": "OCR",
+    "expected": "键拾取",
+    "action": "Click",
+    "post_delay": 3400,
+    "timeout": 3000
+  },
+
+
+  "点击行星采集4": {
+    "recognition": "TemplateMatch",
+    "template": "行星采集图标.png",
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [ "点击4" ]
+  },
+  "点击4": {
+    "action": "Click",
+    "target": [ 22, 357, 143, 18 ],
+    "post_delay": 2000,
+    "next": [ "点击设为终点4" ]
+  },
+  "点击设为终点4": {
+    "recognition": "OCR",
+    "expected": "设为终点",
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [ "退出种菜界面4" ]
+  },
+  "退出种菜界面4": {
+    "recognition": "TemplateMatch",
+    "template": "退出图标.png",
+    "action": "Click",
+    "post_delay": 5500,
+    "next": [ "开始导航4" ]
+  },
+  "开始导航4": {
+    "recognition": "TemplateMatch",
+    "template": "开始导航.png",
+    "action": "Click",
+    "timeout": 200000,
+    "post_delay": 2000,
+    "next": [ "点击一键拾取4" ]
+  },
+  "点击一键拾取4": {
+    "recognition": "OCR",
+    "expected": "键拾取",
+    "timeout": 200000,
+    "post_delay": 4000,
+    "action": "Click",
+    "next": [ "展开侧边栏4" ]
+  },
+  "展开侧边栏4": {
+    "recognition": "TemplateMatch",
+    "template": "侧边栏图标.png",
+    "action": "Click",
+    "post_delay": 3000,
+    "timeout": 8000,
+    "timeout_next": [ "循环4" ],
+    "roi": [ 1200, 370, 60, 60 ],
+    "next": [ "展开菜单4" ]
+  },
+  "展开菜单4": {
+    "recognition": "TemplateMatch",
+    "template": "展开菜单.png",
+    "roi": [ 800, 0, 480, 620 ],
+    "action": "Click",
+    "post_delay": 3000,
+    "next": [ "点击拾取4" ]
+  },
+  "点击拾取4": {
+    "recognition": "OCR",
+    "expected": "拾取",
+    "roi": [ 800, 100, 480, 620 ],
+    "action": "Click",
+    "post_delay": 2000,
+    "next": [ "循环4" ]
+  },
+  "循环4": {
+    "post_delay": 2000,
+    "timeout": 3000,
+    "next": [ "点击箱子图标4", "点击行星采集5" ]
+  },
+  "点击箱子图标4": {
+    "recognition": "TemplateMatch",
+    "template": "箱子图标.png",
+    "roi": [ 950, 0, 100, 720 ],
+    "post_delay": 2000,
+    "action": "Click",
+    "is_sub": true,
+    "timeout": 3000,
+    "next": [ "点击拾取箱子4" ]
+  },
+  "点击拾取箱子4": {
+    "recognition": "OCR",
+    "expected": "拾取",
+    "roi": [ 800, 0, 100, 720 ],
+    "action": "Click",
+    "post_delay": 12000,
+    "timeout": 6000,
+    "next": [ "点击一键拾取后4" ]
+  },
+  "点击一键拾取后4": {
+    "recognition": "OCR",
+    "expected": "键拾取",
+    "action": "Click",
+    "post_delay": 3400,
+    "timeout": 3000
+  },
+
+
+  "点击行星采集5": {
+    "recognition": "TemplateMatch",
+    "template": "行星采集图标.png",
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [ "点击5" ]
+  },
+  "点击5": {
+    "action": "Click",
+    "target": [ 20, 472, 145, 23 ],
+    "post_delay": 2000,
+    "next": [ "点击设为终点5" ]
+  },
+  "点击设为终点5": {
+    "recognition": "OCR",
+    "expected": "设为终点",
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [ "退出种菜界面5" ]
+  },
+  "退出种菜界面5": {
+    "recognition": "TemplateMatch",
+    "template": "退出图标.png",
+    "action": "Click",
+    "post_delay": 5500,
+    "next": [ "开始导航5" ]
+  },
+  "开始导航5": {
+    "recognition": "TemplateMatch",
+    "template": "开始导航.png",
+    "action": "Click",
+    "timeout": 200000,
+    "post_delay": 2000,
+    "next": [ "点击一键拾取5" ]
+  },
+  "点击一键拾取5": {
+    "recognition": "OCR",
+    "expected": "键拾取",
+    "timeout": 200000,
+    "post_delay": 4000,
+    "action": "Click",
+    "next": [ "展开侧边栏5" ]
+  },
+  "展开侧边栏5": {
+    "recognition": "TemplateMatch",
+    "template": "侧边栏图标.png",
+    "action": "Click",
+    "post_delay": 3000,
+    "timeout": 8000,
+    "timeout_next": [ "循环5" ],
+    "roi": [ 1200, 370, 60, 60 ],
+    "next": [ "展开菜单5" ]
+  },
+  "展开菜单5": {
+    "recognition": "TemplateMatch",
+    "template": "展开菜单.png",
+    "roi": [ 800, 0, 480, 620 ],
+    "action": "Click",
+    "post_delay": 3000,
+    "next": [ "点击拾取5" ]
+  },
+  "点击拾取5": {
+    "recognition": "OCR",
+    "expected": "拾取",
+    "roi": [ 800, 100, 480, 620 ],
+    "action": "Click",
+    "post_delay": 2000,
+    "next": [ "循环5" ]
+  },
+  "循环5": {
+    "post_delay": 2000,
+    "timeout": 3000,
+    "next": [ "点击箱子图标5", "点击行星采集6" ]
+  },
+  "点击箱子图标5": {
+    "recognition": "TemplateMatch",
+    "template": "箱子图标.png",
+    "roi": [ 950, 0, 100, 720 ],
+    "post_delay": 2000,
+    "action": "Click",
+    "is_sub": true,
+    "timeout": 3000,
+    "next": [ "点击拾取箱子5" ]
+  },
+  "点击拾取箱子5": {
+    "recognition": "OCR",
+    "expected": "拾取",
+    "roi": [ 800, 0, 100, 720 ],
+    "action": "Click",
+    "post_delay": 12000,
+    "timeout": 6000,
+    "next": [ "点击一键拾取后5" ]
+  },
+  "点击一键拾取后5": {
+    "recognition": "OCR",
+    "expected": "键拾取",
+    "action": "Click",
+    "post_delay": 3400,
+    "timeout": 3000
+  },
+
+
+  "点击行星采集6": {
+    "recognition": "TemplateMatch",
+    "template": "行星采集图标.png",
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [ "点击6" ]
+  },
+  "点击6": {
+    "action": "Click",
+    "target": [ 20, 587, 145, 23 ],
+    "post_delay": 2000,
+    "next": [ "点击设为终点6" ]
+  },
+  "点击设为终点6": {
+    "recognition": "OCR",
+    "expected": "设为终点",
+    "action": "Click",
+    "post_delay": 1000,
+    "next": [ "退出种菜界面6" ]
+  },
+  "退出种菜界面6": {
+    "recognition": "TemplateMatch",
+    "template": "退出图标.png",
+    "action": "Click",
+    "post_delay": 5500,
+    "next": [ "开始导航6" ]
+  },
+  "开始导航6": {
+    "recognition": "TemplateMatch",
+    "template": "开始导航.png",
+    "action": "Click",
+    "timeout": 200000,
+    "post_delay": 2000,
+    "next": [ "点击一键拾取6" ]
+  },
+  "点击一键拾取6": {
+    "recognition": "OCR",
+    "expected": "键拾取",
+    "timeout": 200000,
+    "post_delay": 4000,
+    "action": "Click",
+    "next": [ "展开侧边栏6" ]
+  },
+  "展开侧边栏6": {
+    "recognition": "TemplateMatch",
+    "template": "侧边栏图标.png",
+    "action": "Click",
+    "post_delay": 3000,
+    "timeout": 8000,
+    "timeout_next": [ "循环6" ],
+    "roi": [ 1200, 370, 60, 60 ],
+    "next": [ "展开菜单6" ]
+  },
+  "展开菜单6": {
+    "recognition": "TemplateMatch",
+    "template": "展开菜单.png",
+    "roi": [ 800, 0, 480, 620 ],
+    "action": "Click",
+    "post_delay": 3000,
+    "next": [ "点击拾取6" ]
+  },
+  "点击拾取6": {
+    "recognition": "OCR",
+    "expected": "拾取",
+    "roi": [ 800, 100, 480, 620 ],
+    "action": "Click",
+    "post_delay": 2000,
+    "next": [ "循环6" ]
+  },
+  "循环6": {
+    "post_delay": 2000,
+    "timeout": 3000,
+    "next": [ "点击箱子图标6", "点击坐标图标" ]
+  },
+  "点击箱子图标6": {
+    "recognition": "TemplateMatch",
+    "template": "箱子图标.png",
+    "roi": [ 950, 0, 100, 720 ],
+    "post_delay": 2000,
+    "action": "Click",
+    "is_sub": true,
+    "timeout": 3000,
+    "next": [ "点击拾取箱子6" ]
+  },
+  "点击拾取箱子6": {
+    "recognition": "OCR",
+    "expected": "拾取",
+    "roi": [ 800, 0, 100, 720 ],
+    "action": "Click",
+    "post_delay": 12000,
+    "timeout": 6000,
+    "next": [ "点击一键拾取后6" ]
+  },
+  "点击一键拾取后6": {
+    "recognition": "OCR",
+    "expected": "键拾取",
+    "action": "Click",
+    "post_delay": 3400,
+    "timeout": 3000
+  },
+
+
+
+  "点击坐标图标": {
+    "recognition": "TemplateMatch",
+    "template": "坐标图标.png",
+    "action": "Click",
+    "post_delay": 1500,
+    "next": [ "点击排序图标" ]
+  },
+  "点击排序图标": {
+    "recognition": "TemplateMatch",
+    "template": "排序图标.png",
+    "action": "Click",
+    "post_delay": 1500,
+    "next": [ "点击按距离排序" ]
+  },
+  "点击按距离排序": {
+    "recognition": "OCR",
+    "expected": "按距离排序",
+    "action": "Click",
+    "post_delay": 2000,
+    "next": [ "点击回站" ]
+  },
+  "点击回站": {
+    "action": "Click",
+    "target": [ 241, 305, 17, 20 ],
+    "timeout": 200000,
+    "next": [ "确认到站" ]
+  },
+  "确认到站": {
+    "recognition": "OCR",
+    "expected": "访客",
+    "timeout": 200000,
+    "post_delay": 3000,
+    "next": [ "进入仓库1" ]
+  },
+  "进入仓库1": {
+    "recognition": "TemplateMatch",
+    "template": "仓库图标.png",
+    "action": "Click",
+    "post_delay": 2000,
+    "next": [ "点击货船1" ]
+  },
+  "点击货船1": {
+    "recognition": "OCR",
+    "expected": "伊米卡斯",
+    "post_delay": 2000,
+    "action": "Click",
+    "next": [ "点击全选" ]
+  },
+  "点击全选": {
+    "recognition": "OCR",
+    "expected": "全选",
+    "post_delay": 2000,
+    "action": "Click",
+    "next": [ "点击移动至" ]
+  },
+  "点击移动至": {
+    "recognition": "OCR",
+    "expected": "移动至",
+    "post_delay": 2000,
+    "action": "Click",
+    "next": [ "点击物品机库" ]
+  },
+  "点击物品机库": {
+    "recognition": "OCR",
+    "expected": "物品机库",
+    "post_delay": 2000,
+    "action": "Click",
+    "next": [ "退出仓库1" ]
+  },
+  "退出仓库1": {
+    "recognition": "TemplateMatch",
+    "template": "退出图标.png",
+    "action": "Click",
+    "next": [ "结束" ]
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  "调试任务": {
+
+  },
+  "停止": {
+    "action": "StopTask"
+  }
+
 }
