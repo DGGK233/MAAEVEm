@@ -12,6 +12,14 @@
     "action": "Click",
     "next": []
   },
+  "找到主账号": {
+    "next": []
+  },
+  "找字": {
+    "recognition": "OCR",
+    "expected": "123123",
+    "next": []
+  },
   "进入游戏": {
     "recognition": "OCR",
     "expected": "开始游戏",
@@ -21,7 +29,7 @@
   },
   "选择角色": {
     "recognition": "OCR",
-    "expected": [],
+    "expected": [ "张三" ], //填写军团名字或游戏id
     "action": "Click",
     "target_offset": [ 0, 100, 0, 0 ],
     "timeout": 3000,
@@ -33,51 +41,47 @@
     "recognition": "TemplateMatch",
     "template": "行星采集图标.png",
     "action": "Click",
-    "times_limit": 7,
+    "times_limit": 15,
     "is_sub": true,
-    "post_delay": 5000,
+    "post_delay": 2000,
     "runout_next": [ "进入仓库" ],
     "next": [ "点击行星" ]
   },
   "点击行星": {
+    "recognition": "OCR",
+    "expected": "张三", //填写某个种菜星系名称
     "action": "Click",
-    "target": [ 21, 128, 143, 18 ],
-    "post_delay": 2000,
     "next": [ "增加时间" ]
   },
   "增加时间": {
     "recognition": "TemplateMatch",
     "template": "添加时间图标.png",
     "action": "Click",
-    "post_delay": 500,
     "next": [ "确认增加时间" ]
   },
   "确认增加时间": {
     "recognition": "TemplateMatch",
     "template": "确认图标.png",
     "action": "Click",
-    "post_delay": 500,
     "next": [ "发射" ]
   },
   "发射": {
     "recognition": "OCR",
     "expected": "发射",
     "action": "Click",
-    "post_delay": 500,
     "next": [ "确认发射" ]
   },
   "确认发射": {
     "recognition": "TemplateMatch",
     "template": "确认图标.png",
     "action": "Click",
-    "post_delay": 500,
     "next": [ "退出种菜界面" ]
   },
   "退出种菜界面": {
     "recognition": "TemplateMatch",
     "template": "退出图标.png",
     "action": "Click",
-    "post_delay": 3500,
+    "post_delay": 3000,
     "next": [ "点开设置" ]
   },
   "点开大界面": {
@@ -110,11 +114,17 @@
     "recognition": "TemplateMatch",
     "template": "展开账号图标.png",
     "action": "Click",
-    "next": [ "向下滑动" ]
+    "next": [ "向下滑动1" ]
   },
-  "向下滑动": {
+  "向下滑动1": {
     "action": "Swipe",
-    "begin": [ 468, 562, 192, 23 ],
+    "begin": [ 468, 480, 192, 23 ],
+    "end": [ 468, 0, 192, 23 ],
+    "next": [ "向下滑动2" ]
+  },
+  "向下滑动2": {
+    "action": "Swipe",
+    "begin": [ 468, 480, 192, 23 ],
     "end": [ 468, 0, 192, 23 ],
     "next": [ "点击最后一个账号" ]
   },
@@ -140,7 +150,7 @@
   },
   "选择角色1": {
     "recognition": "OCR",
-    "expected": [],
+    "expected": [ "张三" ], //填写军团名字或游戏id
     "action": "Click",
     "target_offset": [ 0, 100, 0, 0 ],
     "timeout": 3000,
@@ -154,18 +164,22 @@
     "template": "仓库图标.png",
     "action": "Click",
     "post_delay": 2000,
+    "timeout": 3000,
     "next": [ "点击舰船机库" ]
   },
   "点击舰船机库": {
     "recognition": "OCR",
     "expected": "舰船机库",
     "action": "Click",
+    "timeout": 3000,
+    "timeout_next": [ "点击货船" ],
     "next": [ "点击驾驶船只" ]
   },
   "点击驾驶船只": {
     "recognition": "TemplateMatch",
     "roi": [ 250, 0, 1280, 720 ],
     "template": "驾驶船只图标.png",
+    "timeout": 3000,
     "action": "Click",
     "next": [ "点击离舰" ]
   },
@@ -173,12 +187,20 @@
     "recognition": "OCR",
     "expected": "离舰",
     "action": "Click",
+    "timeout": 3000,
+    "timeout_next": [ "点击空位" ],
     "post_delay": 8000,
+    "next": [ "点击货船" ]
+  },
+  "点击空位": {
+    "action": "Click",
+    "target": [ 0, 0, 100, 100 ],
+    "post_delay": 2000,
     "next": [ "点击货船" ]
   },
   "点击货船": {
     "recognition": "OCR",
-    "expected": "伊米卡斯",
+    "expected": "环绕级", //填写货船名称
     "action": "Click",
     "post_delay": 1000,
     "next": [ "点击激活" ]
@@ -286,7 +308,7 @@
     "recognition": "TemplateMatch",
     "template": "箱子图标.png",
     "roi": [ 950, 0, 100, 720 ],
-    "post_delay": 2000,
+    "post_delay": 3000,
     "action": "Click",
     "is_sub": true,
     "timeout": 3000,
@@ -394,7 +416,7 @@
     "recognition": "TemplateMatch",
     "template": "箱子图标.png",
     "roi": [ 950, 0, 100, 720 ],
-    "post_delay": 2000,
+    "post_delay": 3000,
     "action": "Click",
     "is_sub": true,
     "timeout": 3000,
@@ -496,7 +518,7 @@
     "recognition": "TemplateMatch",
     "template": "箱子图标.png",
     "roi": [ 950, 0, 100, 720 ],
-    "post_delay": 2000,
+    "post_delay": 3000,
     "action": "Click",
     "is_sub": true,
     "timeout": 3000,
@@ -598,7 +620,7 @@
     "recognition": "TemplateMatch",
     "template": "箱子图标.png",
     "roi": [ 950, 0, 100, 720 ],
-    "post_delay": 2000,
+    "post_delay": 3000,
     "action": "Click",
     "is_sub": true,
     "timeout": 3000,
@@ -700,7 +722,7 @@
     "recognition": "TemplateMatch",
     "template": "箱子图标.png",
     "roi": [ 950, 0, 100, 720 ],
-    "post_delay": 2000,
+    "post_delay": 3000,
     "action": "Click",
     "is_sub": true,
     "timeout": 3000,
@@ -802,7 +824,7 @@
     "recognition": "TemplateMatch",
     "template": "箱子图标.png",
     "roi": [ 950, 0, 100, 720 ],
-    "post_delay": 2000,
+    "post_delay": 3000,
     "action": "Click",
     "is_sub": true,
     "timeout": 3000,
@@ -870,7 +892,7 @@
   },
   "点击货船1": {
     "recognition": "OCR",
-    "expected": "伊米卡斯",
+    "expected": "环绕级", //填写货船名称
     "post_delay": 2000,
     "action": "Click",
     "next": [ "点击全选" ]
@@ -900,7 +922,7 @@
     "recognition": "TemplateMatch",
     "template": "退出图标.png",
     "action": "Click",
-    "next": [ "结束" ]
+    "next": [ "停止" ]
   },
 
 
